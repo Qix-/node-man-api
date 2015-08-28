@@ -189,7 +189,7 @@ P.formatFont = function (tag, str) {
 	var words = str.split(/[\s\t]+/g);
 
 	for (var i = 0, len = words.length; i < len; i += 6) {
-		this.put.apply(this, [tag].concat(words.slice(i, 6)));
+		this.put.apply(this, [tag].concat(words.slice(i, i + 6)));
 	}
 
 	return this;

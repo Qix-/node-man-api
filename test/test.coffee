@@ -86,6 +86,11 @@ it 'should make a new paragraph', ->
     man.write 'there!'
     expect 'hello!\n.PP\nthere!\n'
 
+it 'should clamp argument counts to 6 arguments', ->
+  make (man, expect)->
+    man.bold '1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17'
+    expect '.B 1 2 3 4 5 6\n.B 7 8 9 10 11 12\n.B 13 14 15 16 17\n'
+
 it 'should make some bold text', ->
   make (man, expect)->
     man.write 'hello!'
