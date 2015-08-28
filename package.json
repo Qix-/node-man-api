@@ -1,0 +1,34 @@
+{
+  "name": "man-api",
+  "description": "Eases the generation of (proper) man pages",
+  "version": "0.1.0",
+  "author": "Qix (http://github.com/qix-)",
+  "keywords": [
+    "man",
+    "manpage",
+    "page",
+    "api"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "pretest": "xo",
+    "test": "mocha --compilers coffee:coffee-script/register"
+  },
+  "xo": {
+    "rules": {
+      "no-mixed-spaces-and-tabs": [2, "smart-tabs"]
+    }
+  },
+  "files": [
+    "index.js"
+  ],
+  "repository": "qix-/node-man-api",
+  "devDependencies": {
+    "coffee-script": "^1.9.3",
+    "coveralls": "^2.11.2",
+    "istanbul": "^0.3.17",
+    "mocha": "^2.2.5",
+    "should": "^7.0.1",
+    "xo": "^0.7.1"
+  }
+}
