@@ -65,6 +65,8 @@ man.write('There are', 3, 'piggies.');
 
 ---
 #### `.header([title, [section, [date, [source, [manual]]]]])`
+![.header() example](img/header.png)
+
 Writes the manpage header. **This is required for all man-pages and should be
 the first method called.**
 
@@ -93,10 +95,10 @@ man.header('fwrite', 3, new Date(), 'Linux', 'Linux Programmer's Reference');
 */
 ```
 
-![.header() example](img/header.png)
-
 ---
 #### `.section(name)`
+![.section() example](img/section.png)
+
 Starts a new section.
 
 - `name`: the name of the section
@@ -111,10 +113,10 @@ Automatically coverts `name` to upper-case.
 man.section('Synopsis'); //-> .SH SYNOPSIS
 ```
 
-![.section() example](img/section.png)
-
 ---
 #### `.subSection(name)`
+![.subSection() example](img/subsection.png)
+
 Starts a new sub-section.
 
 - `name`: the name of the sub-section
@@ -133,10 +135,10 @@ Starts a new sub-section.
 man.subSection('Portability'); //-> .SS Portability
 ```
 
-![.subSection() example](img/subsection.png)
-
 ---
 #### `.name(name, description)`
+![.name() example](img/name.png)
+
 Starts the **NAME** section with the name of the function and the `whatis`
 description. This section is **required** to be standard, and **should be
 called second**, right after `.header()`.
@@ -155,8 +157,6 @@ man.name('some_function', 'performs some operation');
 */
 ```
 
-![.name() example](img/name.png)
-
 ---
 #### `.paragraph()`
 Starts a new paragraph.
@@ -169,6 +169,8 @@ man.paragraph(); //-> .PP
 #### `.bold(str)`
 #### `.italic(str)`
 #### `.small(str)`
+![fonts example](img/font.png)
+
 Writes some bold/italic/small text.
 
 > `.small()` is not very widely supported, and is historically used for
@@ -191,8 +193,6 @@ man.italic('hello, world!'); //-> .I hello, world!
 man.small('hello, world!'); //-> .SM hello, world!
 ```
 
-![fonts example](img/font.png)
-
 ---
 #### `.boldItalic(str)`
 #### `.boldNormal(str)`
@@ -201,6 +201,8 @@ man.small('hello, world!'); //-> .SM hello, world!
 #### `.normalBold(str)`
 #### `.normalItalic(str)`
 #### `.smallBold(str)`
+![alternating fonts example](img/fontAlternating.png)
+
 Write **alternating font** words (see notes below).
 
 - `str`: the string to write
@@ -217,11 +219,11 @@ means `.boldItalic` will start with bold and alternate to italic, whereas
 man.boldItalic("hello there chap"); //-> .BI hello there chap
 ```
 
-![alternating fonts example](img/fontAlternating.png)
-
 ---
 #### `.indentBegin([n])`
 #### `.indentEnd()`
+![indentation example](img/indentBeginEnd.png)
+
 Begins/ends an indentation.
 
 - `n`: the number of columns to indent. If not supplied, will increase current
@@ -244,10 +246,10 @@ man.indentBegin(5).bold('Hello, world!').indentEnd();
 */
 ```
 
-![indentation example](img/indentBeginEnd.png)
-
 ---
 #### `.indent(n, str)`
+![.indent() example](img/indent.png)
+
 Writes some indented text.
 
 - `n`: the number of columns to indent
@@ -267,10 +269,10 @@ man.indent(5, "This is indented!");
 */
 ```
 
-![.indent() example](img/indent.png)
-
 ---
 #### `.paragraphHanging(n)`
+![.paragraphHanging() example](img/paragraphHanging.png)
+
 Starts a paragraph with a hanging indent (first line starts at col +0,
 subsequent lines start at col +`n`).
 
@@ -280,10 +282,10 @@ subsequent lines start at col +`n`).
 man.paragraphHanging(5); //-> .HP 5
 ```
 
-![.paragraphHanging() example](img/paragraphHanging.png)
-
 ---
 #### `.paragraphIndented(n, [tag])`
+![.paragraphIndented() example](img/paragraphIndented.png)
+
 Starts a new indented paragraph with an optional starting "tag".
 
 - `n`: the number of columns to indent
@@ -293,8 +295,6 @@ Starts a new indented paragraph with an optional starting "tag".
 ```javascript
 man.paragraphIndented(4, '>'); //-> .IP > 4
 ```
-
-![.paragraphIndented() example](img/paragraphIndented.png)
 
 ---
 #### `.writeRaw(...)`
