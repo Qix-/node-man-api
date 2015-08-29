@@ -59,7 +59,7 @@ replacement.
 man.write('There are', 3, 'piggies.');
 ```
 
-### `.header([title, [section, [data, [source, [manual]]]]])`
+#### `.header([title, [section, [data, [source, [manual]]]]])`
 Writes the manpage header. **This is required for all man-pages and should be
 the first method called.**
 
@@ -80,7 +80,177 @@ the first method called.**
 
 > **This _must_ be the _first_ call in your manpage** after any comments.
 
-### `.writeRaw(...)`
+#### `.section(name)`
+Starts a new section.
+
+- `name`: the name of the section
+
+Automatically coverts `name` to upper-case.
+
+> Note: You should section names that correspond to the
+> [standard list](http://linux.die.net/man/7/man-pages) (see *Sections within
+> a manual page*).
+
+```javascript
+man.section('Synopsis'); //-> .SH SYNOPSIS
+```
+
+#### `.subSection(name)`
+Starts a new sub-section.
+
+- `name`: the name of the sub-section
+
+> Note: There are no standard sub-sections; therefore, `name` is *not*
+> automatically converted to upper-case.
+
+> Headings capitalize the first word in heading, but otherwise use
+> lower case, except where English usage (e.g., proper nouns) or
+> programming language requirements (e.g., identifier names)
+> dictate otherwise.
+>
+> Due to this, we do no formatting here.
+
+```javascript
+man.subSection('Portability'); //-> .SS Portability
+```
+
+#### `.name(name, description)`
+Starts the **NAME** section with the name of the function and the `whatis`
+description. This section is **required** to be standard, and **should be
+called second**, right after `.header()`.
+
+- `name`: the name of the function/command the man page is about
+- `description`: the `whatis` description to use
+
+> Keep descriptions nice and concise, like a GitHub repository description.
+
+```javascript
+man.name('some_function', 'performs some operation');
+
+/*
+	.SH NAME
+	some_function \- performs some operation
+*/
+```
+
+#### `.paragraph()`
+Starts a new paragraph.
+
+```javascript
+man.paragraph(); //-> .PP
+```
+
+#### `.bold(str)`
+#### `.italic(str)`
+#### `.small(str)`
+Writes some bold/italic/small text.
+
+> `.small()` is not very widely supported, and is historically used for
+> acronyms. Keep this in mind before using it.
+
+- `str`: the string to write
+
+These are font tags, and to comply with portability standards we break `str`
+up by spaces/new-lines and clump them into 6-word commands as old
+implementations only supported that many. Keep this in mind if whitespace is
+an issue.
+
+Note that font tags do not cause a line break. Switching from regular ("roman")
+font to bold/italic/small does require a new tag but doesn't cause a new line to
+form. To do this, you need to use `.paragraph()` (`.PP`).
+
+```javascript
+man.bold('hello, world!'); //-> .B hello, world!
+man.italic('hello, world!'); //-> .I hello, world!
+man.small('hello, world!'); //-> .SM hello, world!
+```
+
+#### `.boldItalic(str)`
+#### `.boldNormal(str)`
+#### `.italicBold(str)`
+#### `.italicNormal(str)`
+#### `.normalBold(str)`
+#### `.normalItalic(str)`
+#### `.smallBold(str)`
+Write **alternating font** words (see notes below).
+
+- `str`: the string to write
+
+**These methods do not combine two styles**. Instead, they *alternate* between
+two styles. The alternation occurs at a space character, and **the resulting
+text does not include a space!**
+
+The naming convention used can be read *X-to-Y* (e.g. *bold-to-italic*). This
+means `.boldItalic` will start with bold and alternate to italic, whereas
+`.italicBold` will start with italics and alternate to bold.
+
+```javascript
+man.boldItalic("hello there chap"); //-> .BI hello there chap
+```
+
+#### `.indentBegin([n])`
+#### `.indentEnd()`
+Begins/ends an indentation.
+
+- `n`: the number of columns to indent. If not supplied, will increase current
+  indent by the last indent used. Can be negative (or even an expression string,
+  e.g. `+11-4`)
+
+Indentation amount is relative to current indentation.
+
+Ending an indentation will set indentation level back to previous value.
+
+```javascript
+man.indentBegin(5).bold('Hello, world!').indentEnd();
+
+/*
+	.RS 5
+	.B Hello, world!
+	.RE
+*/
+```
+
+#### `.indent(n, str)`
+Writes some indented text.
+
+- `n`: the number of columns to indent
+- `str`: the string to indent
+
+This is a simple wrapper around `.indentBegin(n).write(str).indentEnd()`.
+
+
+```javscript
+man.indent(5, "This is indented!");
+
+/*
+	.RS 5
+	This is indented!
+	.RE
+*/
+```
+
+#### `.paragraphHanging(n)`
+Starts a paragraph with a hanging indent (first line starts at col +0,
+subsequent lines start at col +`n`).
+
+- `n`: the number of columns to indent by
+
+```javascript
+man.paragraphHanging(5); //-> .HP 5
+```
+
+#### `.paragraphIndented(n, [tag])`
+Starts a new indented paragraph with an optional starting "tag".
+
+- `n`: the number of columns to indent
+- `tag`: if specified, starts preceds the paragraph with a tag (or textual
+  "icon") in the margin.
+
+```javascript
+man.paragraphIndented(4, '>'); //-> .IP > 4
+```
+
+#### `.writeRaw(...)`
 > This is an internal method and may not pertain to your use-case
 
 Writes some raw text to the output.
@@ -90,10 +260,10 @@ Writes some raw text to the output.
 > **Does not perform textual replacements.**
 
 ```javascript
-man.writeRaw('foo', 1234, true);
+man.writeRaw('foo', 1234, true); //-> foo 1234 true
 ```
 
-### `.put(tag, ...)`
+#### `.put(tag, ...)`
 > This is an internal method and may not pertain to your use-case
 
 Writes a tag and some arguments.
