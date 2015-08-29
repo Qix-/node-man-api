@@ -1,7 +1,8 @@
 # node-man-api [![Travis-CI.org Build Status](https://img.shields.io/travis/Qix-/node-man-api.svg?style=flat-square)](https://travis-ci.org/Qix-/node-man-api) [![Coveralls.io Coverage Rating](https://img.shields.io/coveralls/Qix-/node-man-api.svg?style=flat-square)](https://coveralls.io/r/Qix-/node-man-api)
 > Wrapper around standards compliant Manpage tags
 
-This library is a lightweight wrapper around Manpage tags. It is meant to
+This library is a lightweight wrapper around the
+[Manpage file format](http://linux.die.net/man/7/man-pages). It is meant to
 facilitate the generation of compliant tags, and aims to aid in the replacement
 of incredibly non-standard Markdown-to-Manpage converters.
 
