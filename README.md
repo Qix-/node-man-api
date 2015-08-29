@@ -289,7 +289,7 @@ man.paragraphHanging(5); //-> .HP 5
 Starts a new indented paragraph with an optional starting "tag".
 
 - `n`: the number of columns to indent
-- `tag`: if specified, starts preceds the paragraph with a tag (or textual
+- `tag`: if specified, starts preceeds the paragraph with a tag (or textual
   "icon") in the margin.
 
 ```javascript
