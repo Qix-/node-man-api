@@ -235,11 +235,6 @@ P.italicNormal = function (str) {
 };
 
 /* warning - this might not do what you think it does! :) */
-P.italicNormal = function (str) {
-	return this.formatFont('IR', str);
-};
-
-/* warning - this might not do what you think it does! :) */
 P.normalBold = function (str) {
 	return this.formatFont('RB', str);
 };
