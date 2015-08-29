@@ -42,6 +42,7 @@ events.EventEmitter`, and only emit `data` events.
 
 See [above example](#example).
 
+---
 #### `.write(...)`
 
 Writes text to the manpage.
@@ -60,6 +61,7 @@ replacement.
 man.write('There are', 3, 'piggies.');
 ```
 
+---
 #### `.header([title, [section, [date, [source, [manual]]]]])`
 Writes the manpage header. **This is required for all man-pages and should be
 the first method called.**
@@ -91,6 +93,7 @@ man.header('fwrite', 3, new Date(), 'Linux', 'Linux Programmer's Reference');
 
 ![.header() example](img/header.png)
 
+---
 #### `.section(name)`
 Starts a new section.
 
@@ -108,6 +111,7 @@ man.section('Synopsis'); //-> .SH SYNOPSIS
 
 ![.section() example](img/section.png)
 
+---
 #### `.subSection(name)`
 Starts a new sub-section.
 
@@ -129,6 +133,7 @@ man.subSection('Portability'); //-> .SS Portability
 
 ![.subSection() example](img/subsection.png)
 
+---
 #### `.name(name, description)`
 Starts the **NAME** section with the name of the function and the `whatis`
 description. This section is **required** to be standard, and **should be
@@ -150,6 +155,7 @@ man.name('some_function', 'performs some operation');
 
 ![.name() example](img/name.png)
 
+---
 #### `.paragraph()`
 Starts a new paragraph.
 
@@ -157,8 +163,11 @@ Starts a new paragraph.
 man.paragraph(); //-> .PP
 ```
 
+---
 #### `.bold(str)`
+---
 #### `.italic(str)`
+---
 #### `.small(str)`
 Writes some bold/italic/small text.
 
@@ -184,12 +193,19 @@ man.small('hello, world!'); //-> .SM hello, world!
 
 ![fonts example](img/font.png)
 
+---
 #### `.boldItalic(str)`
+---
 #### `.boldNormal(str)`
+---
 #### `.italicBold(str)`
+---
 #### `.italicNormal(str)`
+---
 #### `.normalBold(str)`
+---
 #### `.normalItalic(str)`
+---
 #### `.smallBold(str)`
 Write **alternating font** words (see notes below).
 
@@ -209,7 +225,9 @@ man.boldItalic("hello there chap"); //-> .BI hello there chap
 
 ![alternating fonts example](img/fontAlternating.png)
 
+---
 #### `.indentBegin([n])`
+---
 #### `.indentEnd()`
 Begins/ends an indentation.
 
@@ -235,6 +253,7 @@ man.indentBegin(5).bold('Hello, world!').indentEnd();
 
 ![indentation example](img/indentBeginEnd.png)
 
+---
 #### `.indent(n, str)`
 Writes some indented text.
 
@@ -257,6 +276,7 @@ man.indent(5, "This is indented!");
 
 ![.indent() example](img/indent.png)
 
+---
 #### `.paragraphHanging(n)`
 Starts a paragraph with a hanging indent (first line starts at col +0,
 subsequent lines start at col +`n`).
@@ -269,6 +289,7 @@ man.paragraphHanging(5); //-> .HP 5
 
 ![.paragraphHanging() example](img/paragraphHanging.png)
 
+---
 #### `.paragraphIndented(n, [tag])`
 Starts a new indented paragraph with an optional starting "tag".
 
@@ -282,6 +303,7 @@ man.paragraphIndented(4, '>'); //-> .IP > 4
 
 ![.paragraphIndented() example](img/paragraphIndented.png)
 
+---
 #### `.writeRaw(...)`
 > This is an internal method and may not pertain to your use-case
 
@@ -295,6 +317,7 @@ Writes some raw text to the output.
 man.writeRaw('foo', 1234, true); //-> foo 1234 true
 ```
 
+---
 #### `.put(tag, ...)`
 > This is an internal method and may not pertain to your use-case
 
@@ -309,6 +332,7 @@ Formats each argument using `.formatArgument()`.
 man.put('B', 'foobar', 3, true); //-> .B foobar 3 true
 ```
 
+---
 #### `.formatDate([date])`
 > This is an internal method and may not pertain to your use-case
 
@@ -327,6 +351,7 @@ Uses UTC offsets.
 man.formatDate() //-> August 28, 2015
 ```
 
+---
 #### `.formatArgument(str)`
 > This is an internal method and may not pertain to your use-case
 
