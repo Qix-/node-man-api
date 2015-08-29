@@ -63,22 +63,29 @@ man.write('There are', 3, 'piggies.');
 Writes the manpage header. **This is required for all man-pages and should be
 the first method called.**
 
-- `title`: the title of your manpage.
+- `title`: the title of your manpage. (default: *Untitled*)
 - `section`: which [section](http://linux.die.net/man/7/man-pages) your manpage
-  belongs to.
+  belongs to. (default: 7)
 	- can be a number or a pre-defined helper string listed in `sections` in
 		[index.js](blob/master/index.js).
-- `date`: the date the manpage was created
+- `date`: the date the manpage was created. (default: `new Date()`)
 	- if passed, can be `Date` object, unix timestamp (`Number`), or a string
     (which is simply returned verbatim). Uses `.formatDate()`.
 - `source`: the source of the manpage; *this has nothing to do with source
 	code*. Check [this manpage](http://linux.die.net/man/7/man-pages) for more
-  information on the `source` parameter.
+  information on the `source` parameter. (default: *Linux*)
 - `manual`: the overarching manual this manpage belongs to. Check
   [this manpage](http://linux.die.net/man/7/man-pages) for more
   information on the `manual` parameter.
 
 > **This _must_ be the _first_ call in your manpage** after any comments.
+
+```javascript
+man.header('fwrite', 3, new Date(), 'Linux', 'Linux Programmer's Reference');
+
+/*
+	.TH FWRITE 3 "August 28, 2015" Linux "Linux Programmer's Reference"
+*/
 
 #### `.section(name)`
 Starts a new section.
