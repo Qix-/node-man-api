@@ -59,7 +59,7 @@ replacement.
 man.write('There are', 3, 'piggies.');
 ```
 
-#### `.header([title, [section, [data, [source, [manual]]]]])`
+#### `.header([title, [section, [date, [source, [manual]]]]])`
 Writes the manpage header. **This is required for all man-pages and should be
 the first method called.**
 
