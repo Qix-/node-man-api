@@ -31,6 +31,8 @@ man.header('foobar', 3).name('foobar', 'foo into the bar');
 man.section('Other').write('This is some other text.').bold('This is bold');
 ```
 
+![example output image](img/example.png)
+
 ## API
 
 #### `Man([fn])`
