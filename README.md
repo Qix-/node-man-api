@@ -257,7 +257,7 @@ Writes some indented text.
 
 This is a simple wrapper around `.indentBegin(n).write(str).indentEnd()`.
 
-```javscript
+```javascript
 man.write('Hello!');
 man.indent(5, "This is indented!");
 
