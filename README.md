@@ -167,9 +167,7 @@ man.paragraph(); //-> .PP
 
 ---
 #### `.bold(str)`
----
 #### `.italic(str)`
----
 #### `.small(str)`
 Writes some bold/italic/small text.
 
@@ -197,17 +195,11 @@ man.small('hello, world!'); //-> .SM hello, world!
 
 ---
 #### `.boldItalic(str)`
----
 #### `.boldNormal(str)`
----
 #### `.italicBold(str)`
----
 #### `.italicNormal(str)`
----
 #### `.normalBold(str)`
----
 #### `.normalItalic(str)`
----
 #### `.smallBold(str)`
 Write **alternating font** words (see notes below).
 
@@ -229,7 +221,6 @@ man.boldItalic("hello there chap"); //-> .BI hello there chap
 
 ---
 #### `.indentBegin([n])`
----
 #### `.indentEnd()`
 Begins/ends an indentation.
 
