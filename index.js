@@ -115,17 +115,17 @@ P.formatDate = function (date) {
 		date.getUTCFullYear();
 };
 
-P.trim = function (str) {
+P.trimSpaces = function (str) {
 	return str.replace(/^[\t\x20]+|[\t\x20]+$/g, '');
 };
 
 P.writeRaw = function () {
-	this.emit('data', this.trim([].join.call(arguments, ' ')) + '\n');
+	this.emit('data', this.trimSpaces([].join.call(arguments, ' ')) + '\n');
 };
 
 P.write = function () {
 	var data = [].join.call(arguments, ' ');
-	data = this.trim(data);
+	data = this.trimSpaces(data);
 	data = this.normalizeString(data);
 	data += os.EOL;
 	this.emit('data', data);
