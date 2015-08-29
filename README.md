@@ -9,16 +9,19 @@ of incredibly non-standard Markdown-to-Manpage converters.
 ## Example
 ```javascript
 var Man = require('man-api');
+var fs = require('fs');
+
+var out = fs.createWriteStream('foobar.3');
 
 var man = new Man();
 man.on('data', function (str) {
-	/* append `str` somewhere */
+	out.write(str);
 });
 
 // or
 
 var man = new Man(function (str) {
-	/* append `str` somewhere */
+	out.write(str);
 });
 
 
