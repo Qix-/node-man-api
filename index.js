@@ -121,6 +121,7 @@ P.trimSpaces = function (str) {
 
 P.writeRaw = function () {
 	this.emit('data', this.trimSpaces([].join.call(arguments, ' ')) + '\n');
+	return this;
 };
 
 P.write = function () {
