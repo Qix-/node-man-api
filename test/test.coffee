@@ -26,7 +26,7 @@ it 'should write', ->
 it 'should format periods', ->
   make (man, expect)->
     man.write 'hello. I am doge.'
-    expect 'hello\\. I am doge\\.\n'
+    expect 'hello\\&. I am doge\\&.\n'
 
 it 'should make a comment', ->
   make (man, expect)->
@@ -96,56 +96,56 @@ it 'should make some bold text', ->
     man.write 'hello!'
     man.bold 'Hello, world! This is great.'
     man.write 'there!'
-    expect 'hello!\n.B Hello, world! This is great\\.\nthere!\n'
+    expect 'hello!\n.B Hello, world! This is great\\&.\nthere!\n'
 
 it 'should make some italic text', ->
   make (man, expect)->
     man.write 'hello!'
     man.italics 'Hello, world! This is great.'
     man.write 'there!'
-    expect 'hello!\n.I Hello, world! This is great\\.\nthere!\n'
+    expect 'hello!\n.I Hello, world! This is great\\&.\nthere!\n'
 
 it 'should make some small text', ->
   make (man, expect)->
     man.write 'hello!'
     man.small 'Hello, world! This is great.'
     man.write 'there!'
-    expect 'hello!\n.SM Hello, world! This is great\\.\nthere!\n'
+    expect 'hello!\n.SM Hello, world! This is great\\&.\nthere!\n'
 
 it 'should make some bold-normal alternating text', ->
   make (man, expect)->
     man.write 'hello!'
     man.boldNormal 'Hello, world! This is great.'
     man.write 'there!'
-    expect 'hello!\n.BR Hello, world! This is great\\.\nthere!\n'
+    expect 'hello!\n.BR Hello, world! This is great\\&.\nthere!\n'
 
 it 'should make some bold-italic alternating text', ->
   make (man, expect)->
     man.write 'hello!'
     man.boldItalic 'Hello, world! This is great.'
     man.write 'there!'
-    expect 'hello!\n.BI Hello, world! This is great\\.\nthere!\n'
+    expect 'hello!\n.BI Hello, world! This is great\\&.\nthere!\n'
 
 it 'should make some italic-bold alternating text', ->
   make (man, expect)->
     man.write 'hello!'
     man.italicBold 'Hello, world! This is great.'
     man.write 'there!'
-    expect 'hello!\n.IB Hello, world! This is great\\.\nthere!\n'
+    expect 'hello!\n.IB Hello, world! This is great\\&.\nthere!\n'
 
 it 'should make some italic-normal alternating text', ->
   make (man, expect)->
     man.write 'hello!'
     man.italicNormal 'Hello, world! This is great.'
     man.write 'there!'
-    expect 'hello!\n.IR Hello, world! This is great\\.\nthere!\n'
+    expect 'hello!\n.IR Hello, world! This is great\\&.\nthere!\n'
 
 it 'should make some small-bold alternating text', ->
   make (man, expect)->
     man.write 'hello!'
     man.smallBold 'Hello, world! This is great.'
     man.write 'there!'
-    expect 'hello!\n.SB Hello, world! This is great\\.\nthere!\n'
+    expect 'hello!\n.SB Hello, world! This is great\\&.\nthere!\n'
 
 it 'should indent', ->
   make (man, expect)->

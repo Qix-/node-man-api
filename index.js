@@ -74,7 +74,7 @@ Man.manuals = manuals;
 var P = Man.prototype;
 
 P.normalizeString = function (str) {
-	str = str.replace(/\./g, '\\.');
+	str = str.replace(/\./g, '\\&.');
 	str = str.replace('®', '\\*R');
 	str = str.replace('™', '\\*Tm');
 	str = str.replace('“', '\\*(lq');
