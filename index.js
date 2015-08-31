@@ -67,6 +67,10 @@ function Man(fn) {
 
 util.inherits(Man, EventEmitter);
 
+Man.sections = sections;
+Man.sources = sources;
+Man.manuals = manuals;
+
 var P = Man.prototype;
 
 P.normalizeString = function (str) {
