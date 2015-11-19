@@ -91,7 +91,7 @@ the first method called.**
 > **This _must_ be the _first_ call in your manpage** after any comments.
 
 ```javascript
-man.header('fwrite', 3, new Date(), 'Linux', 'Linux Programmer's Reference');
+man.header('fwrite', 3, new Date(), 'Linux', 'Linux Programmer\'s Reference');
 
 /*
 	.TH FWRITE 3 "August 28, 2015" Linux "Linux Programmer's Reference"
